@@ -18,6 +18,7 @@
 #    28/06/2018, V1.7 - Add --warning and --config options, idea from Markus Hof
 #    20/02/2019, V1.8 - Add --nagios (ICON_EMOJI_FOLLOWS_NAGIOS_STATE), idea from Jorgen van der Meulen
 #    12/06/2019, V1.9 - Add --verbose option, moved default behavior of comments on config file usage from '--silent' to '--verbose' option.
+#    30/02/2019, V2.0 - Changed ---nagios explanation, improved --nagios DOWN logo
 # ---------------------------------------------------
 
 # initialise variables
@@ -59,7 +60,8 @@ then
   echo "  --config <file>     use alternate config file, instead of default ${FILE_CONF}"
   echo "  --user <user-id>    Recipient User or Channel ID (replaces user-id= in ${FILE_CONF})"
   echo "  --key <api-key>     API Key of your Telegram bot (replaces api-key= in ${FILE_CONF})"
-  echo "  --nagios <state>    State can be either Nagios Core/Nagios XI/Naemon/OP5 \$SERVICESTATE$ or \$HOSTSTATE$"
+  echo "  --nagios <state>    State can be either Nagios Core/Nagios XI/Naemon/OP5 \$SERVICESTATE$ or \$HOSTSTATE$ in UPPERCASE (UP, DOWN, UNREACHABLE, WARNING, CRITICAL, UNKNOWN, OK)"
+  echo "                        "
   echo "                      Nagios should use notification command definitions like this to automatically set an icon that matches the Nagios state:"
   echo "                        "
   echo "                      define command {"
@@ -121,8 +123,10 @@ case "${ICON_EMOJI_FOLLOWS_NAGIOS_STATE}" in
   WARNING|UNREACHABLE)
         DISPLAY_ICON=$(echo -e "\U26A0")
         ;;
-
-  DOWN|UNKNOWN|CRITICAL)
+  DOWN)
+        DISPLAY_ICON=$(echo -e "\U1F525")
+        ;;
+  UNKNOWN|CRITICAL)
         DISPLAY_ICON=$(echo -e "\U1F6A8")
         ;;
   *)
