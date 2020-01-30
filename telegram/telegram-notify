@@ -18,7 +18,7 @@
 #    28/06/2018, V1.7 - Add --warning and --config options, idea from Markus Hof
 #    20/02/2019, V1.8 - Add --nagios (ICON_EMOJI_FOLLOWS_NAGIOS_STATE), idea from Jorgen van der Meulen
 #    12/06/2019, V1.9 - Add --verbose option, moved default behavior of comments on config file usage from '--silent' to '--verbose' option.
-#    30/02/2019, V2.0 - Changed ---nagios explanation, improved --nagios DOWN logo
+#    30/01/2020, V2.0 - Changed ---nagios explanation, improved --nagios DOWN logo
 # ---------------------------------------------------
 
 # initialise variables
